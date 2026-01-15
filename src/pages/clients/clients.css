@@ -1,0 +1,387 @@
+.clientesContainer {
+    width: 100%;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.clientesHeader {
+    height: 90px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 24px;
+    padding: 15px;
+}
+
+.border-break {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.clientesTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.clientesSubtitle {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.tableCard {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+}
+
+.filtersRow {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+.searchWrapper {
+    position: relative;
+    flex: 1;
+    max-width: 448px;
+}
+
+.filterIconLeft {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.filterIconRight {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.filterInput {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.filterInput:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 1px #000;
+}
+
+.selectWrapper {
+    position: relative;
+    width: 160px;
+}
+
+.clientesTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+.clientesTable thead th {
+    padding: 16px 8px;
+    color: #9ca3af;
+    font-weight: 600;
+    border-bottom: 1px solid #f9fafb;
+}
+
+.clientesTable tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.clientesTable tbody tr:hover {
+    background-color: rgba(249, 250, 251, 0.8);
+}
+
+.clientesTable td {
+    padding: 20px 8px;
+    border-bottom: 1px solid #f9fafb;
+    color: #4b5563;
+}
+
+.clientName {
+    font-weight: 700;
+    color: #111827;
+    display: block;
+}
+
+.clientLabel {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.addressCell {
+    color: #6b7280;
+    max-width: 280px;
+    line-height: 1.5;
+}
+
+.permissionButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.btnPermission {
+    padding: 6px 16px;
+    border-radius: 99px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.btnActive {
+    background-color: #000;
+    color: #fff;
+}
+
+.btnInactive {
+    background-color: transparent;
+    border-color: #e5e7eb;
+    color: #9ca3af;
+}
+
+.btnPermission:hover {
+    transform: translateY(-1px);
+}
+
+.switchBase {
+    position: relative;
+    display: inline-flex;
+    height: 20px;
+    width: 40px;
+    align-items: center;
+    border-radius: 99px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.switchOn {
+    background-color: #000;
+}
+
+.switchOff {
+    background-color: #e5e7eb;
+}
+
+.switchCircle {
+    height: 12px;
+    width: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.circleOn {
+    transform: translateX(24px);
+}
+
+.circleOff {
+    transform: translateX(4px);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.pageBtn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.pageBtn:hover {
+    color: #000;
+}
+
+.pageNumber {
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+    .filtersRow {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .searchWrapper,
+    .selectWrapper {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .clientesTable td,
+    .clientesTable th {
+        padding: 12px 6px;
+    }
+
+    .addressCell {
+        max-width: 200px;
+    }
+
+    .btnPermission {
+        padding: 5px 12px;
+        font-size: 9px;
+    }
+
+    .pagination {
+        gap: 6px;
+        margin-top: 24px;
+    }
+
+    .pageNumber {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 768px) {
+    .filtersRow {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .searchWrapper,
+    .selectWrapper {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .clientesTable {
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .clientesTable td,
+    .clientesTable th {
+        padding: 10px 6px;
+    }
+
+    .addressCell {
+        max-width: 150px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .btnPermission {
+        padding: 4px 10px;
+        font-size: 8px;
+    }
+
+    .pagination {
+        gap: 4px;
+        margin-top: 20px;
+    }
+
+    .pageNumber {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clientesHeader {
+        padding: 10px;
+        height: auto;
+    }
+
+    .clientesTitle {
+        font-size: 18px;
+    }
+
+    .clientesSubtitle {
+        font-size: 12px;
+    }
+
+    .filtersRow {
+        gap: 6px;
+    }
+
+    .filterInput {
+        padding: 8px 10px 8px 36px;
+        font-size: 12px;
+    }
+
+    .selectWrapper {
+        width: 100%;
+    }
+
+    .clientesTable td,
+    .clientesTable th {
+        padding: 8px 4px;
+        font-size: 12px;
+    }
+
+    .addressCell {
+        max-width: 120px;
+    }
+
+    .btnPermission {
+        padding: 3px 8px;
+        font-size: 7px;
+    }
+
+    .pagination {
+        gap: 3px;
+        margin-top: 16px;
+    }
+
+    .pageNumber {
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+    }
+}

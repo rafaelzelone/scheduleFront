@@ -1,0 +1,80 @@
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding-bottom: 16px;
+  flex-wrap: wrap; 
+}
+
+.pageArrow {
+  background: none;
+  border: none;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.pageArrow:disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pageNumberActive {
+  width: 24px;
+  height: 24px;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 24px;
+}
+
+@media (max-width: 768px) {
+  .paginationContainer {
+    gap: 6px;
+    margin-top: 16px;
+    padding-bottom: 12px;
+  }
+
+  .pageArrow {
+    font-size: 14px;
+    padding: 3px;
+  }
+
+  .pageNumberActive {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .paginationContainer {
+    gap: 4px;
+    margin-top: 12px;
+    padding-bottom: 8px;
+  }
+
+  .pageArrow {
+    font-size: 12px;
+    padding: 2px;
+  }
+
+  .pageNumberActive {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+}

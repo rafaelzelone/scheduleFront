@@ -1,0 +1,152 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalAgendamento {
+  background: white;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modalHeader h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.btnCloseModal {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #111827;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modalInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modalInputGroup label {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.modalInputGroup label strong {
+  color: #000;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputWrapper input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 12px;
+  color: #6b7280;
+}
+
+.selectWrapperModal select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: white;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.btnConfirmarAgendamento {
+  background: black;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: opacity 0.2s;
+}
+
+.btnConfirmarAgendamento:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+  .modalAgendamento {
+    max-width: 95%;
+    padding: 20px;
+    margin: 0 10px;
+  }
+
+  .modalHeader h2 {
+    font-size: 16px;
+  }
+
+  .modalForm {
+    gap: 16px;
+  }
+
+  .modalInputGroup label {
+    font-size: 12px;
+  }
+
+  .inputWrapper input,
+  .selectWrapperModal select {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .inputIcon {
+    right: 10px;
+  }
+
+  .btnConfirmarAgendamento {
+    padding: 12px;
+    font-size: 13px;
+  }
+}
