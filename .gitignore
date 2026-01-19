@@ -33,6 +33,13 @@ dist-ssr/
 # TypeScript
 *.tsbuildinfo
 
+# Certificados SSL
+certs/
+*.key
+*.crt
+*.pem
+
+
 # Produção / Builds (Opcional)
 # Se você for rodar o build no servidor de hospedagem, 
 # mantenha o 'dist/' ignorado acima para não subir arquivos pesados.
