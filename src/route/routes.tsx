@@ -16,7 +16,6 @@ interface LayoutProps {
 const DashboardLayout = ({ children, role }: LayoutProps) => {
     return (
         <div className="layoutContainer">
-            {/* Passamos as props para a sua nova Sidebar */}
             <Sidebar role={role} />
             <main className="mainContent">
                 {children}
@@ -29,7 +28,6 @@ export default function App() {
     return (
         <BrowserRouter basename="/tech">
             <Routes>
-                {/* Rota de Login: Sem Sidebar */}
                 <Route path="admin/login" element={<Login />} />
 
                 <Route
@@ -105,10 +103,6 @@ export default function App() {
                         </DashboardLayout>
                     }
                 />
-
-
-
-                {/* Redirecionamento padrão: Se não estiver logado, vai para login */}
                 <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
         </BrowserRouter>

@@ -3,6 +3,7 @@ import { Calendar, Users, List, ChevronDown, UserCircle, LogOut, Settings } from
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './sidebar.css';
 import { getUser } from '../../service/user/data';
+import logo from '../../../public/logo.svg';
 
 interface SidebarProps {
   role: 'admin' | 'client';
@@ -38,9 +39,11 @@ export function Sidebar({ role }: SidebarProps) {
       <div className="topSection">
         <div className="logoArea" onClick={() => setIsCollapsed(!isCollapsed)}>
           <div className="logoIconSquare">
-            <div className="logoLine" />
-            <div className="logoLine" />
-            <div className="logoLine" />
+            <img
+              src={logo}
+              alt="Notification"
+              className="not-logo-data"
+            />
           </div>
         </div>
 

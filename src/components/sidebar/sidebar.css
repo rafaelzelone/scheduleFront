@@ -11,6 +11,10 @@
   top: 0;
 }
 
+.not-logo-data{
+  width: 80%;
+}
+
 .topSection {
   flex: 1;
   display: flex;

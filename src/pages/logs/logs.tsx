@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Search, ListFilter, History } from 'lucide-react';
 import './log.css';
 import { Pagination } from '../../components/page/pagination';
 import { logService } from '../../service/request/logService';
 import notLogo from '../../../public/msgNot.svg';
-import type { Log } from '../../type/log';
+import { ActivityLabel, PageLabel, type Log } from '../../type/log';
+import searchIcon from '../../../public/search-2-line.svg'
 
 export function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
@@ -12,11 +12,17 @@ export function Logs() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [search, setSearch] = useState("");
+  const [date, setDate] = useState("");
 
   const fetchLogs = async (pageNumber: number = 1) => {
     try {
       setLoading(true);
-      const response = await logService.list({ page: pageNumber, search });
+      const response = await logService.list({
+        page: pageNumber,
+        search,
+        date,
+      });
+
       const { data, pagination } = response.data;
       setLogs(data);
       setPage(pagination.page);
@@ -27,6 +33,7 @@ export function Logs() {
       setLoading(false);
     }
   };
+
 
   useEffect(() => {
     fetchLogs(page);
@@ -42,7 +49,7 @@ export function Logs() {
       <div className="tableCard">
         <div className="logsFilters">
           <div className="searchBox">
-            <Search className="searchIcon" size={18} />
+            <img src={searchIcon} alt="Buscar" className="searchIcon" />
             <input
               type="text"
               placeholder="Filtre por cliente, tipo de atividade ou módulo..."
@@ -51,17 +58,21 @@ export function Logs() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <button className="filterButton">
-            <span>Selecione</span>
-            <ListFilter size={16} />
-          </button>
+          <div className="dateFilter">
+            <input
+              type="date"
+              className="dateInput"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+
         </div>
 
         <div style={{ overflowX: 'auto' }}>
           <table className="logsTable">
             <thead>
               <tr>
-                <th>Cliente</th>
                 <th>Usuário</th>
                 <th>Tipo de atividade</th>
                 <th>Módulo</th>
@@ -74,35 +85,36 @@ export function Logs() {
                   <td colSpan={5} style={{ textAlign: "center" }}>Carregando...</td>
                 </tr>
               ) : logs.length === 0 ? (
-                <tr>
-                  <td colSpan={5} style={{ textAlign: "center" }}>
+                <td colSpan={5} className="area-image">
+                  <div className="image-wrapper">
                     <img
                       src={notLogo}
                       alt="Notification"
                       className="not-logo"
                     />
-                  </td>
-                </tr>
+                  </div>
+                </td>
               ) : (
                 logs.map((log) => (
-                  <tr key={log.id} className='border-break'>
-                    <td>
-                      <span className="clientNameBold">
-                        {log.logCustomer.street}, {log.logCustomer.number} - {log.logCustomer.city}/{log.logCustomer.state}
-                      </span><br />
-                      <span className="clientTag">Cliente</span>
-                    </td>
+                  <tr key={log.id} className='border-break item-of-log'>
+
                     <td>
                       {log.logUser.firstName} {log.logUser.lastName} <br />
-                      <span className="clientTag">{log.logUser.email}</span>
+                      <span className="clientTag">{log.logUser.admin ? "Admin" : "Cliente"}</span>
                     </td>
                     <td>
-                      <span className="activityBadge">{log.typeActivity}</span>
+                      <span className="activityBadge">
+
+                        {ActivityLabel[log.typeActivity]}
+
+                      </span>
                     </td>
                     <td>
                       <div className="moduleInfo">
-                        <History size={14} />
-                        {log.page}
+                        <div className='data-info'>
+                          {/* <History size={14} /> */}
+                          {PageLabel[log.page]}
+                        </div>
                       </div>
                     </td>
                     <td>

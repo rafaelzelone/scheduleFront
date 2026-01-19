@@ -1,4 +1,4 @@
-.clientesContainer {
+.clientsContainer {
     width: 100%;
     height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -17,7 +17,7 @@
     }
 }
 
-.clientesHeader {
+.clientsHeader {
     height: 90px;
     border-bottom: 1px solid #e5e7eb;
     margin-bottom: 24px;
@@ -28,14 +28,29 @@
     border-bottom: 1px solid #e5e7eb;
 }
 
-.clientesTitle {
+.area-image {
+    text-align: center;
+    vertical-align: middle;
+    border: none !important;
+    height: 60vh;
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+}
+
+.clientsTitle {
     font-size: 24px;
     font-weight: 700;
     color: #111827;
     margin: 0;
 }
 
-.clientesSubtitle {
+.clientsSubtitle {
     font-size: 14px;
     color: #6b7280;
     font-weight: 500;
@@ -48,6 +63,7 @@
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     padding: 24px;
+    min-height: 80vh;
 }
 
 .filtersRow {
@@ -99,31 +115,32 @@
     width: 160px;
 }
 
-.clientesTable {
+.clientsTable {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
     font-size: 14px;
+
 }
 
-.clientesTable thead th {
+.clientsTable thead th {
     padding: 16px 8px;
-    color: #9ca3af;
+    color: #000;
     font-weight: 600;
-    border-bottom: 1px solid #f9fafb;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.clientesTable tbody tr {
+.clientsTable tbody tr {
     transition: background-color 0.2s ease;
 }
 
-.clientesTable tbody tr:hover {
+.clientsTable tbody tr:hover {
     background-color: rgba(249, 250, 251, 0.8);
 }
 
-.clientesTable td {
+.clientsTable td {
     padding: 20px 8px;
-    border-bottom: 1px solid #f9fafb;
+    border-bottom: 1px solid var(--border-color);
     color: #4b5563;
 }
 
@@ -247,6 +264,56 @@
     font-weight: 600;
 }
 
+.filtersRow {
+  display: flex;
+  gap: 16px;
+}
+
+.searchWrapper{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filterIcon {
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.filterInput.withIcon {
+  padding-left: 32px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+.calendarWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.calendarWrapper .filterIcon {
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.calendarWrapper .filterInput.withIcon {
+  padding-left: 32px; 
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+
 @media (max-width: 1024px) {
     .filtersRow {
         flex-wrap: wrap;
@@ -259,8 +326,8 @@
         flex: 1 1 100%;
     }
 
-    .clientesTable td,
-    .clientesTable th {
+    .clientsTable td,
+    .clientsTable th {
         padding: 12px 6px;
     }
 
@@ -297,14 +364,14 @@
         width: 100%;
     }
 
-    .clientesTable {
+    .clientsTable {
         display: block;
         overflow-x: auto;
         width: 100%;
     }
 
-    .clientesTable td,
-    .clientesTable th {
+    .clientsTable td,
+    .clientsTable th {
         padding: 10px 6px;
     }
 
@@ -333,16 +400,16 @@
 }
 
 @media (max-width: 480px) {
-    .clientesHeader {
+    .clientsHeader {
         padding: 10px;
         height: auto;
     }
 
-    .clientesTitle {
+    .clientsTitle {
         font-size: 18px;
     }
 
-    .clientesSubtitle {
+    .clientsSubtitle {
         font-size: 12px;
     }
 
@@ -359,8 +426,8 @@
         width: 100%;
     }
 
-    .clientesTable td,
-    .clientesTable th {
+    .clientsTable td,
+    .clientsTable th {
         padding: 8px 4px;
         font-size: 12px;
     }

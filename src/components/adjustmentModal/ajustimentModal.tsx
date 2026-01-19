@@ -3,6 +3,7 @@ import { X as CloseIcon, Plus } from "lucide-react";
 import "./adjustmentModal.css";
 import { scheduleTimeService } from "../../service/request/scheduleTimeService";
 import { roomService } from "../../service/request/roomService";
+import { Toast } from "../toast/toast";
 
 interface AdjustmentModalProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ interface RoomSchedule {
 export function AdjustmentModal({ isOpen, onClose }: AdjustmentModalProps) {
   const [rooms, setRooms] = useState<RoomSchedule[]>([]);
   const [saving, setSaving] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -67,22 +69,20 @@ export function AdjustmentModal({ isOpen, onClose }: AdjustmentModalProps) {
 
       for (const room of rooms) {
         if (!room.roomName || !room.startTime || !room.endTime) {
-          console.warn("Campos obrigatórios não preenchidos, pulando...");
+          setToast({ message: 'Campos obrigatórios não preenchidos.', type: 'error' });
+
           continue;
         }
 
         if (room.id) {
-          // atualiza scheduleTime existente
           await scheduleTimeService.update(room.id, {
             startTime: room.startTime,
             endTime: room.endTime,
             blockMinutes: room.blockMinutes,
           });
         } else {
-          // cria sala primeiro
           const { data: newRoom } = await roomService.create({ name: room.roomName });
 
-          // cria scheduleTime
           await scheduleTimeService.create({
             roomId: newRoom.id,
             startTime: room.startTime,
@@ -94,7 +94,8 @@ export function AdjustmentModal({ isOpen, onClose }: AdjustmentModalProps) {
 
       onClose();
     } catch (error) {
-      console.error("Erro ao salvar ajustes", error);
+      setToast({ message: 'Ocorreu um erro ao altera o agendamento.', type: 'error' });
+
     } finally {
       setSaving(false);
     }
@@ -157,6 +158,13 @@ export function AdjustmentModal({ isOpen, onClose }: AdjustmentModalProps) {
             <Plus size={16} /> Adicionar nova sala
           </button>
         </div>
+        {toast && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast(null)}
+          />
+        )}
 
         <div className="modalFooter">
           <button className="saveButton" onClick={handleSave} disabled={saving}>

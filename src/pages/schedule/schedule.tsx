@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Search, Calendar, Check, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import "./scheliude.css";
 import { Pagination } from "../../components/page/pagination";
 import { AdjustmentModal } from "../../components/adjustmentModal/ajustimentModal";
@@ -7,10 +7,12 @@ import { cancelSchedule, confirmSchedule, getSchedules } from "../../service/req
 import { ModalNovoAgendamento } from "../../components/modalSchedule/modalSchedule";
 import notLogo from '../../../public/msgNot.svg';
 import type { Schedule } from "../../type/schedule";
+import { getUser } from "../../service/user/data";
+import searchIcon from '../../../public/search-2-line.svg'
 
 export function Schedule() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [agendamentos, setAgendamentos] = useState<Schedule[]>([]);
+  const [schedule, setSchedule] = useState<Schedule[]>([]);
   const [searchName, setSearchName] = useState("");
   const [searchDate, setSearchDate] = useState("");
   const [page, setPage] = useState(1);
@@ -20,6 +22,11 @@ export function Schedule() {
 
   async function loadSchedules() {
     try {
+      const user = getUser();
+      if (user) {
+        setIsAdmin(user.admin)
+      }
+
       setLoading(true);
       const response = await getSchedules({
         page,
@@ -27,10 +34,9 @@ export function Schedule() {
         customerName: searchName || undefined,
         date: searchDate || undefined,
       });
-
-      setAgendamentos(response.data.data);
+      setSchedule(response.data.data);
       setTotalPages(response.data.pagination.totalPages);
-      setIsAdmin(response.data.isAdmin);
+
     } finally {
       setLoading(false);
     }
@@ -62,8 +68,8 @@ export function Schedule() {
       <div className="conteiner-schedule">
         <div className="topActions">
           <div className="searchGroup">
-            <div className="inputWrapper">
-              <Search className="inputIcon" size={18} />
+            <div className="searchWrapper">
+              <img src={searchIcon} alt="Buscar" className="searchIcon" />
               <input
                 type="text"
                 placeholder="Filtre por nome"
@@ -80,7 +86,6 @@ export function Schedule() {
                 value={searchDate}
                 onChange={(e) => { setPage(1); setSearchDate(e.target.value); }}
               />
-              <Calendar className="inputIcon" style={{ left: "auto", right: "12px" }} size={18} />
             </div>
           </div>
 
@@ -101,10 +106,10 @@ export function Schedule() {
               </tr>
             </thead>
             <tbody>
-              {agendamentos.map((item) => (
+              {schedule.map((item) => (
                 <tr key={item.id} className={item.status === "CONFIRMED" ? "" : item.status === "CANCELED" ? "rowCanceled" : "rowConfirmed"}>
                   <td>{new Date(item.date).toLocaleString()}</td>
-                  <td><div className="clientCell"><span className="clientName">{item.customer.name}</span><span className="clientLabel">Cliente</span></div></td>
+                  <td><div className="clientCell"><span className="clientName">{item.customer.user.firstName} {item.customer.user.lastName}</span><span className="clientLabel">Cliente</span></div></td>
                   <td><span className="badgeSala">{item.room.name}</span></td>
                   <td><span className={`statusBadge ${item.status === "PEDDING" ? "statusPedding" : item.status === "CANCELED" ? "statusCanceled" : "statusConfirmed"}`}>{item.status}</span></td>
                   <td>
@@ -115,20 +120,30 @@ export function Schedule() {
                   </td>
                 </tr>
               ))}
-              {!loading && agendamentos.length === 0 && (<tr><td colSpan={5} style={{ textAlign: "center" }}>
-                <img
-                  src={notLogo}
-                  alt="Notification"
-                  className="not-logo"
-                />
-              </td></tr>)}
+              {!loading && schedule.length === 0 && (
+                <td colSpan={5} className="area-image">
+                  <div className="image-wrapper">
+                    <img
+                      src={notLogo}
+                      alt="Notification"
+                      className="not-logo"
+                    />
+                  </div>
+                </td>
+              )}
             </tbody>
           </table>
 
           {isAdmin ? (
-            <AdjustmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <AdjustmentModal isOpen={isModalOpen} onClose={() => {
+              loadSchedules()
+              setIsModalOpen(false)
+            }} />
           ) : (
-            <ModalNovoAgendamento isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <ModalNovoAgendamento isOpen={isModalOpen} onClose={() => {
+              loadSchedules()
+              setIsModalOpen(false)
+            }} />
           )}
         </div>
       </div>

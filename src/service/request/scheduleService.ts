@@ -18,6 +18,6 @@ export function confirmSchedule(id: string) {
 }
 
 
-export function createSchedule(payload: { date: string; time: string; room: string }) {
+export function createSchedule(payload: { date: string; time: string; roomId: string }) {
   return api.post("/schedules", payload);
 }

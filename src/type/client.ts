@@ -11,15 +11,13 @@ export interface Cliente {
   userId: string;
   createdAt: string;
   status?: boolean;
-  permissoes?: {
-    agendamentos: boolean;
-    logs: boolean;
-  };
   user: {
     id: string;
     email: string;
     firstName: string;
     lastName: string;
     active: boolean;
+    log: boolean;
+    schedule: boolean;
   };
 }
