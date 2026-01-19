@@ -1,0 +1,269 @@
+.logsContainer {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.logsHeader {
+    height: 90px;
+    padding: 12px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #e5e7eb
+}
+
+.logsTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.logsSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.logsFilters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.searchBox {
+  position: relative;
+  flex: 1;
+  max-width: 448px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 12px 10px 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  border-color: #000;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filterButton:hover {
+  background-color: #f9fafb;
+}
+
+.logsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.logsTable thead th {
+  padding: 16px 8px;
+  color: #9ca3af;
+  font-weight: 500;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.logsTable tbody tr {
+  border-bottom: 1px solid #f9fafb;
+  transition: background-color 0.2s;
+}
+
+.logsTable tbody tr:hover {
+  background-color: #fcfcfc;
+}
+
+.logsTable td {
+  padding: 20px 8px;
+}
+
+.clientNameBold {
+  font-weight: 600;
+  color: #111827;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.clientTag {
+  font-size: 10px;
+  color: #9ca3af;
+  text-transform: capitalize;
+}
+
+.activityBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.moduleInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.dateTimeBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 99px;
+  color: #6b7280;
+  font-size: 10px;
+}
+
+.tableCard {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px; 
+  margin: 16px;
+}
+
+.logsFilters {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #9ca3af;
+  margin-bottom: 12px;
+}
+
+.paginationContainer {
+  margin-top: 32px;
+}
+
+
+@media (max-width: 1024px) {
+  .logsFilters {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .searchBox,
+  .filterButton {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .logsTable td,
+  .logsTable th {
+    padding: 16px 6px;
+  }
+
+  .clientTag,
+  .activityBadge,
+  .dateTimeBadge,
+  .moduleInfo {
+    font-size: 9px;
+  }
+
+  .tableCard {
+    padding: 20px;
+    margin: 12px;
+  }
+
+  .paginationContainer {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logsFilters {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .logsTable {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .logsTable td,
+  .logsTable th {
+    padding: 12px 6px;
+    font-size: 12px;
+  }
+
+  .tableCard {
+    padding: 16px;
+    margin: 8px;
+  }
+
+  .activityBadge,
+  .dateTimeBadge,
+  .moduleInfo,
+  .clientTag {
+    font-size: 8px;
+  }
+
+  .paginationContainer {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logsFilters {
+    gap: 6px;
+  }
+
+  .searchBox,
+  .filterButton {
+    width: 100%;
+  }
+
+  .logsTable td,
+  .logsTable th {
+    padding: 10px 4px;
+    font-size: 11px;
+  }
+
+  .tableCard {
+    padding: 12px;
+    margin: 6px;
+  }
+
+  .activityBadge,
+  .dateTimeBadge,
+  .moduleInfo,
+  .clientTag {
+    font-size: 7px;
+    padding: 3px 8px;
+  }
+
+  .paginationContainer {
+    margin-top: 16px;
+  }
+}
