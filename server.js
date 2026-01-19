@@ -27,7 +27,7 @@ app.use((req, res) => {
 });
 
 
-const PORT = process.env.PORT || 21104;
+const PORT =  21104;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor de Produção rodando em: http://localhost:${PORT}`);
 });
