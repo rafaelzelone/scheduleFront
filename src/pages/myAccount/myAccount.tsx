@@ -137,7 +137,6 @@ export const MyAccount = () => {
       <main className="form-wrapper">
         <div className="card">
           <form className="account-form" onSubmit={e => e.preventDefault()}>
-            {/* Campos do formulário */}
             <div className="row">
               <div className="field">
                 <label>NOME <span>(Obrigatório)</span></label>

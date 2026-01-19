@@ -5,14 +5,8 @@ import { Pagination } from "../../components/page/pagination";
 import { AdjustmentModal } from "../../components/adjustmentModal/ajustimentModal";
 import { cancelSchedule, confirmSchedule, getSchedules } from "../../service/request/scheduleService";
 import { ModalNovoAgendamento } from "../../components/modalSchedule/modalSchedule";
-
-type Schedule = {
-  id: string;
-  date: string;
-  status: string;
-  customer: { name: string };
-  room: { name: string };
-};
+import notLogo from '../../../public/msgNot.svg';
+import type { Schedule } from "../../type/schedule";
 
 export function Schedule() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -121,7 +115,13 @@ export function Schedule() {
                   </td>
                 </tr>
               ))}
-              {!loading && agendamentos.length === 0 && (<tr><td colSpan={5} style={{ textAlign: "center" }}>Nenhum agendamento encontrado</td></tr>)}
+              {!loading && agendamentos.length === 0 && (<tr><td colSpan={5} style={{ textAlign: "center" }}>
+                <img
+                  src={notLogo}
+                  alt="Notification"
+                  className="not-logo"
+                />
+              </td></tr>)}
             </tbody>
           </table>
 

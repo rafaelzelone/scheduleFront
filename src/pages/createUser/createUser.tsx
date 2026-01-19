@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { EyeOff, Eye, Loader2 } from 'lucide-react';
 import './createUser.css';
 import { authService } from '../../service/request/authService';
+import notLogo from '../../../public/msgNot.svg';
 
 export function CreateUser() {
   const navigate = useNavigate();
@@ -60,7 +61,6 @@ export function CreateUser() {
     e.preventDefault();
     setError(null);
 
-    // Validar campos obrigatórios
     if (!formData.nome || !formData.sobrenome || !formData.email || !formData.senha || !formData.cep) {
       setError("Preencha todos os campos obrigatórios");
       return;
@@ -94,9 +94,11 @@ export function CreateUser() {
     <div className="registerContainer">
       <header className="registerNavbar">
         <div className="logoPlaceholder">
-          <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-            <path d="M10 30L30 10M15 35L35 15M5 25L25 5" stroke="black" strokeWidth="4" strokeLinecap="round"/>
-          </svg>
+          <img
+            src={notLogo}
+            alt="Notification"
+            className="not-logo"
+          />
         </div>
         <button className="btnLogin" onClick={() => navigate('/login')}>Login</button>
       </header>
@@ -125,10 +127,10 @@ export function CreateUser() {
             <div className="inputGroup">
               <label className="inputLabel">Senha de acesso (Obrigatório)</label>
               <div className="passwordWrapper">
-                <input 
+                <input
                   id="senha"
-                  type={showPassword ? "text" : "password"} 
-                  placeholder="insira sua senha" 
+                  type={showPassword ? "text" : "password"}
+                  placeholder="insira sua senha"
                   className="registerInput"
                   onChange={handleChange}
                 />
@@ -141,11 +143,11 @@ export function CreateUser() {
             <div className="inputGroup">
               <label className="inputLabel">CEP (Obrigatório)</label>
               <div className="inputWithLoader">
-                <input 
-                  id="cep" 
-                  type="text" 
-                  placeholder="00000-000" 
-                  className="registerInput" 
+                <input
+                  id="cep"
+                  type="text"
+                  placeholder="00000-000"
+                  className="registerInput"
                   onBlur={handleCepBlur}
                   onChange={handleChange}
                 />

@@ -3,25 +3,8 @@ import { Search, ListFilter, History } from 'lucide-react';
 import './log.css';
 import { Pagination } from '../../components/page/pagination';
 import { logService } from '../../service/request/logService';
-
-type Log = {
-  id: string;
-  typeActivity: string;
-  page: string;
-  createdAt: string;
-  logUser: {
-    firstName: string;
-    lastName: string;
-    email: string;
-  };
-  logCustomer: {
-    CEP: string;
-    street: string;
-    number: number;
-    city: string;
-    state: string;
-  };
-};
+import notLogo from '../../../public/msgNot.svg';
+import type { Log } from '../../type/log';
 
 export function Logs() {
   const [logs, setLogs] = useState<Log[]>([]);
@@ -92,7 +75,13 @@ export function Logs() {
                 </tr>
               ) : logs.length === 0 ? (
                 <tr>
-                  <td colSpan={5} style={{ textAlign: "center" }}>Nenhum log encontrado</td>
+                  <td colSpan={5} style={{ textAlign: "center" }}>
+                    <img
+                      src={notLogo}
+                      alt="Notification"
+                      className="not-logo"
+                    />
+                  </td>
                 </tr>
               ) : (
                 logs.map((log) => (

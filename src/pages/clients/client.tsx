@@ -3,31 +3,8 @@ import { Search, Calendar } from 'lucide-react';
 import './clients.css';
 import { Pagination } from '../../components/page/pagination';
 import { clientService } from '../../service/request/clientService';
-
-interface Cliente {
-  id: string;
-  CEP: string;
-  street: string;
-  number: number;
-  complement?: string;
-  neighboor?: string;
-  city: string;
-  state: string;
-  userId: string;
-  createdAt: string;
-  status?: boolean;
-  permissoes?: {
-    agendamentos: boolean;
-    logs: boolean;
-  };
-  user: {
-    id: string;
-    email: string;
-    firstName: string;
-    lastName: string;
-    active: boolean;
-  };
-}
+import type { Cliente } from '../../type/client';
+import notLogo from '../../../public/msgNot.svg';
 
 export function Clients() {
   const [clientes, setClientes] = useState<Cliente[]>([]);
@@ -114,7 +91,12 @@ export function Clients() {
                 </tr>
               ) : clientes.length === 0 ? (
                 <tr>
-                  <td colSpan={5} style={{ textAlign: 'center' }}>Nenhum cliente encontrado</td>
+                  <td colSpan={5} style={{ textAlign: 'center' }}>
+                    <img
+                      src={notLogo}
+                      alt="Notification"
+                      className="not-logo"
+                    /></td>
                 </tr>
               ) : (
                 clientes.map((cliente) => (

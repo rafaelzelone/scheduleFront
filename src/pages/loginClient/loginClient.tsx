@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { EyeOff, Eye } from "lucide-react";
 import "./loginClient.css";
 import { authService } from "../../service/request/authService";
+import logo from '../../../public/logo.svg';
 
 export function LoginClient() {
   const navigate = useNavigate();
@@ -54,9 +55,11 @@ export function LoginClient() {
     <div className="loginContainer">
       <header className="loginNavbar">
         <div className="logoPlaceholder">
-          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 30L30 10M15 35L35 15M5 25L25 5" stroke="black" strokeWidth="4" strokeLinecap="round" />
-          </svg>
+          <img
+            src={logo}
+            alt="Notification"
+            className="not-logo"
+          />
         </div>
       </header>
 

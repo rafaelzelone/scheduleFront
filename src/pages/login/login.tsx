@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { EyeOff, Eye } from "lucide-react";
 import "./login.css";
 import { authService } from "../../service/request/authService";
+import logo from '../../../public/logo.svg';
 
 export function Login() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -42,20 +43,11 @@ export function Login() {
     <div className="loginPage">
       <div className="loginCard">
         <div className="loginLogo">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 30L30 10M15 35L35 15M5 25L25 5"
-              stroke="black"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </svg>
+          <img
+            src={logo}
+            alt="Notification"
+            className="not-logo"
+          />
         </div>
 
         <h1 className="loginTitle">Login Admin</h1>
