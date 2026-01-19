@@ -26,7 +26,7 @@ const DashboardLayout = ({ children, role }: LayoutProps) => {
 
 export default function App() {
     return (
-        <BrowserRouter basename="/tech">
+        <BrowserRouter basename="/schedule/web">
             <Routes>
                 <Route path="admin/login" element={<Login />} />
 
