@@ -26,7 +26,6 @@ export function ModalNovoAgendamento({ isOpen, onClose }: ModalProps) {
       setLoadingRooms(true);
       try {
         const response = await roomService.list();
-        // supondo que a API retorne array de { id, name }
         setRooms(response.data);
       } catch (err) {
         console.error('Erro ao buscar salas', err);

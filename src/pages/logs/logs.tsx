@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Search, ListFilter, History } from 'lucide-react';
 import './log.css';
 import { Pagination } from '../../components/page/pagination';

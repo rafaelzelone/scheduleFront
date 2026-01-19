@@ -15,7 +15,6 @@ export const MyAccount = () => {
 
   const [modalMessage, setModalMessage] = useState<string>("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [modalType, setModalType] = useState<"success" | "error" | "warning">("success");
 
   const [formData, setFormData] = useState({
     nome: '',
@@ -57,7 +56,6 @@ export const MyAccount = () => {
         });
       } catch (error) {
         console.error(error);
-        setModalType("error");
         setModalMessage("Erro ao carregar dados do usuário e cliente");
         setModalOpen(true);
       }
@@ -84,7 +82,6 @@ export const MyAccount = () => {
         }
       } catch (error) {
         console.error(error);
-        setModalType("error");
         setModalMessage("Erro ao buscar CEP");
         setModalOpen(true);
       } finally {
@@ -119,12 +116,10 @@ export const MyAccount = () => {
         state: formData.estado
       });
 
-      setModalType("success");
       setModalMessage("Dados salvos com sucesso!");
       setModalOpen(true);
     } catch (error) {
       console.error(error);
-      setModalType("error");
       setModalMessage("Ocorreu um erro ao salvar os dados");
       setModalOpen(true);
     } finally {

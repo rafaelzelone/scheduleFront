@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { EyeOff, Eye, Loader2 } from "lucide-react";
+import { EyeOff, Eye } from "lucide-react";
 import "./loginClient.css";
 import { authService } from "../../service/request/authService";
 

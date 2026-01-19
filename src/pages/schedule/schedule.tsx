@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Search, Calendar, Check, X } from "lucide-react";
 import "./scheliude.css";
 import { Pagination } from "../../components/page/pagination";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { X as CloseIcon, Plus } from "lucide-react";
 import "./adjustmentModal.css";
 import { scheduleTimeService } from "../../service/request/scheduleTimeService";

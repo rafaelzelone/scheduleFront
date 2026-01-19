@@ -27,7 +27,7 @@ const DashboardLayout = ({ children, role }: LayoutProps) => {
 
 export default function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/tech">
             <Routes>
                 {/* Rota de Login: Sem Sidebar */}
                 <Route path="admin/login" element={<Login />} />
