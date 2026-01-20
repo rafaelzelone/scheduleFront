@@ -1,5 +1,5 @@
 # ============================================
-# 🔁 Redirecionar /tech para o servidor Node (porta 21001)
+# 🔁 Redirecionar /schedule/web para o servidor Node (porta 21001)
 # ============================================
 
 RewriteEngine On
@@ -8,8 +8,8 @@ RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Encaminhar requisições de /tech para o Node.js na porta 21001
-RewriteCond %{REQUEST_URI} ^/tech
+# Encaminhar requisições de /schedule/web para o Node.js na porta 21001
+RewriteCond %{REQUEST_URI} ^/schedule/web
 RewriteRule ^/schedule/web(.*)$ http://localhost:21001//schedule/web$1 [P,L]
 
 # ============================================
