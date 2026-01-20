@@ -1,0 +1,21 @@
+# ============================================
+# 🔁 Redirecionar /tech para o servidor Node (porta 21001)
+# ============================================
+
+RewriteEngine On
+
+# Garantir que HTTPS esteja ativo
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Encaminhar requisições de /tech para o Node.js na porta 21001
+RewriteCond %{REQUEST_URI} ^/tech
+RewriteRule ^/schedule/web(.*)$ http://localhost:21001//schedule/web$1 [P,L]
+
+# ============================================
+# ⚙️ SPA (React/Vite) - fallback para index.html
+# ============================================
+# Se o proxy não encontrar o arquivo, tenta o index.html da pasta dist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^/schedule/web?$ //schedule/webindex.html [L]
